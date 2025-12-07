@@ -1,0 +1,24 @@
+stages:
+  - test
+
+postman-test-job:
+  stage: test
+  image: 
+    name: postman/newman
+    entrypoint: [""]
+  script:
+    - echo "Checking Newman version"
+    - newman --version
+    - echo "Installing reporter..."
+    - npm install -g newman-reporter-html
+    - echo "Running Tests..."
+    - newman run collection.json \
+        --reporters cli,html,junit \
+        --reporter-html-export report.html \
+        --reporter-junit-export report.xml
+  artifacts:
+    when: always
+    paths:
+      - report.html
+    reports:
+      junit: report.xml
