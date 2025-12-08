@@ -28,13 +28,13 @@ cypress_02_tests:
   stage: test
   image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
-  - cd "cypress/02_POM"
-  - npm install --unsafe-perm
-  - chmod +x node_modules/.bin/cypress
-  - npx --unsafe-perm cypress verify
-  - echo "Running Cypress tests"
-  - npx --unsafe-perm cypress run --browser electron
-  - echo "Cypress tests finished."
+    - cd "cypress/02_POM"
+    - npm install --unsafe-perm
+    - chmod +x node_modules/.bin/cypress   # Permiso de ejecución
+    - npx --unsafe-perm cypress verify
+    - echo "Running Cypress tests for carpeta 02 (POM)"
+    - npx --unsafe-perm cypress run --browser electron --headless
+    - echo "Cypress tests finished."
   artifacts:
     expire_in: 1 week
     when: always
