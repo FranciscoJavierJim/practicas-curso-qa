@@ -33,11 +33,12 @@ cypress_02_tests:
     - npx --unsafe-perm cypress verify
     - npx --unsafe-perm cypress run --browser electron --headless
   artifacts:
-  expire_in: 1 week
-  when: always
-  paths:
-    - cypress/02_POM/cypress/videos
-    - cypress/02_POM/cypress/screenshots
+    paths:
+      - cypress/02_POM/cypress/videos
+      - cypress/02_POM/cypress/screenshots
+    expire_in: 1 week
+    when: always
+
 
 # =======================
 # TEST DE CYPRESS 03
