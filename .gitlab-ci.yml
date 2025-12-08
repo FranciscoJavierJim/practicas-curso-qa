@@ -30,7 +30,9 @@ cypress_02_tests:
   script:
     - cd "cypress/02_POM"
     - npm install --unsafe-perm
-    - chmod +x node_modules/.bin/cypress   # Permiso de ejecución
+    - chmod +x node_modules/.bin/cypress
+    - npm start &
+    - npx wait-on http://localhost:3000
     - npx --unsafe-perm cypress verify
     - echo "Running Cypress tests for carpeta 02 (POM)"
     - npx --unsafe-perm cypress run --browser electron --headless
@@ -41,6 +43,7 @@ cypress_02_tests:
     paths:
       - cypress/videos
       - cypress/screenshots
+
 
 # =======================
 #     TEST DE CYPPRESS 03
