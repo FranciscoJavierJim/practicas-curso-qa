@@ -10,24 +10,24 @@ cypress_01_tests:
   image: cypress/included:12.17.1
   script:
     - cd "cypress/01 cypress sencillo"
-    - npm ci
-    - npx cypress run --headless --browser chrome
+    - npm install
+    - npx cypress run --headless --browser electron
 
 cypress_02_tests:
   stage: test
   image: cypress/included:12.17.1
   script:
     - cd "cypress/02 cypres POM"
-    - npm ci
-    - npx cypress run --headless --browser chrome
+    - npm install
+    - npx cypress run --headless --browser electron
 
 cypress_03_tests:
   stage: test
   image: cypress/included:12.17.1
   script:
     - cd "cypress/03 cypress POM + cucumber"
-    - npm ci
-    - npx cypress run --headless --browser chrome
+    - npm install
+    - npx cypress run --headless --browser electron
 
 # =======================
 #     TESTS DE POSTMAN
