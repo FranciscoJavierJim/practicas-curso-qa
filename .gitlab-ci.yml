@@ -7,7 +7,7 @@ stages:
 
 cypress_01_tests:
   stage: test
-  image: cypress/base:18
+  image: cypress/included:12.17.1
   script:
     - cd "cypress/01 cypress sencillo"
     - npm ci
@@ -15,7 +15,7 @@ cypress_01_tests:
 
 cypress_02_tests:
   stage: test
-  image: cypress/base:18
+  image: cypress/included:12.17.1
   script:
     - cd "cypress/02 cypres POM"
     - npm ci
@@ -23,7 +23,7 @@ cypress_02_tests:
 
 cypress_03_tests:
   stage: test
-  image: cypress/base:18
+  image: cypress/included:12.17.1
   script:
     - cd "cypress/03 cypress POM + cucumber"
     - npm ci
