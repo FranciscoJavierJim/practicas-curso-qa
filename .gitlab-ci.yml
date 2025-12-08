@@ -22,6 +22,46 @@ cypress_01_tests:
       - cypress/screenshots
 
 # =======================
+#     TEST DE CYPRESS 02
+# =======================
+
+cypress_02_tests:
+  stage: test
+  image: cypress/browsers:node18.12.0-chrome103-ff107
+  script:
+    - cd "cypress/02 cypres POM"
+    - npm install
+    - echo "Running Cypress tests for carpeta 02 (POM)"
+    - npx cypress run --browser electron
+    - echo "Cypress tests finished."
+  artifacts:
+    expire_in: 1 week
+    when: always
+    paths:
+      - cypress/videos
+      - cypress/screenshots
+
+# =======================
+#     TEST DE CYPRESS 03
+# =======================
+
+cypress_03_tests:
+  stage: test
+  image: cypress/browsers:node18.12.0-chrome103-ff107
+  script:
+    - cd "cypress/03 cypress POM + cucumber"
+    - npm install
+    - echo "Running Cypress tests for carpeta 03 (POM + Cucumber)"
+    - npx cypress run --browser electron
+    - echo "Cypress tests finished."
+  artifacts:
+    expire_in: 1 week
+    when: always
+    paths:
+      - cypress/videos
+      - cypress/screenshots
+
+# =======================
 #     TEST DE POSTMAN
 # =======================
 
