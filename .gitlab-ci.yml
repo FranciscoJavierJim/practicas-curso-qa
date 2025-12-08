@@ -7,11 +7,19 @@ stages:
 
 cypress_01_tests:
   stage: test
-  image: cypress/included:12.17.1
+  image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
     - cd "cypress/01 cypress sencillo"
     - npm install
-    - npx cypress run --headless --browser electron
+    - echo "Running Cypress tests for carpeta 01"
+    - npx cypress run --browser electron
+    - echo "Cypress tests finished."
+  artifacts:
+    expire_in: 1 week
+    when: always
+    paths:
+      - cypress/videos
+      - cypress/screenshots
 
 # =======================
 #     TEST DE POSTMAN
@@ -24,4 +32,5 @@ postman_tests:
     entrypoint: [""]
   script:
     - cd "ejercicios-API-con-postman"
+    - echo "Running Postman collection"
     - newman run collection.json
