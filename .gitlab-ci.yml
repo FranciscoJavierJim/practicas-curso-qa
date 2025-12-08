@@ -2,7 +2,7 @@ stages:
   - test
 
 # =======================
-#     TESTS DE CYPRESS
+#     TEST DE CYPRESS 01
 # =======================
 
 cypress_01_tests:
@@ -13,24 +13,8 @@ cypress_01_tests:
     - npm install
     - npx cypress run --headless --browser electron
 
-cypress_02_tests:
-  stage: test
-  image: cypress/included:12.17.1
-  script:
-    - cd "cypress/02 cypres POM"
-    - npm install
-    - npx cypress run --headless --browser electron
-
-cypress_03_tests:
-  stage: test
-  image: cypress/included:12.17.1
-  script:
-    - cd "cypress/03 cypress POM + cucumber"
-    - npm install
-    - npx cypress run --headless --browser electron
-
 # =======================
-#     TESTS DE POSTMAN
+#     TEST DE POSTMAN
 # =======================
 
 postman_tests:
