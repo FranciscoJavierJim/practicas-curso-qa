@@ -39,5 +39,5 @@ postman_tests:
     name: postman/newman:latest
     entrypoint: [""]
   script:
-    - cd postman
+    - cd "ejercicios-API-con-postman"
     - newman run collection.json
