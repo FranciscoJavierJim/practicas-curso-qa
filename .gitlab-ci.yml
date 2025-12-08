@@ -56,3 +56,4 @@ postman_tests:
   rules:
     - changes:
         - postman/**/*
+        
