@@ -1,18 +1,22 @@
 stages:
-  - test
+  - cypress01
+  - cypress02
+  - cypress03
+  - postman
 
 # =======================
-#     TEST DE CYPRESS 01
+# TEST DE CYPRESS 01
 # =======================
 cypress_01_tests:
-  stage: test
+  stage: cypress01
   image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
     - cd "cypress/01_sencillo"
     - npm install --unsafe-perm
-    - npx cypress verify
+    - chmod +x node_modules/.bin/cypress
+    - npx --unsafe-perm cypress verify
     - echo "Running Cypress tests for carpeta 01"
-    - npx cypress run --browser electron
+    - npx --unsafe-perm cypress run --browser electron --headless
     - echo "Cypress tests finished."
   artifacts:
     expire_in: 1 week
@@ -22,17 +26,17 @@ cypress_01_tests:
       - cypress/screenshots
 
 # =======================
-#     TEST DE CYPRESS 02
+# TEST DE CYPRESS 02
 # =======================
 cypress_02_tests:
-  stage: test
+  stage: cypress02
   image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
     - cd "cypress/02_POM"
     - npm install --unsafe-perm
     - chmod +x node_modules/.bin/cypress
-    - npm start &
-    - npx wait-on http://localhost:3000
+    - npm start &                      # Levanta la app en background
+    - npx wait-on http://localhost:3000 # Espera a que la app esté lista
     - npx --unsafe-perm cypress verify
     - echo "Running Cypress tests for carpeta 02 (POM)"
     - npx --unsafe-perm cypress run --browser electron --headless
@@ -44,19 +48,19 @@ cypress_02_tests:
       - cypress/videos
       - cypress/screenshots
 
-
 # =======================
-#     TEST DE CYPPRESS 03
+# TEST DE CYPRESS 03
 # =======================
 cypress_03_tests:
-  stage: test
+  stage: cypress03
   image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
     - cd "cypress/03_POMcucumber"
     - npm install --unsafe-perm
-    - npx cypress verify
+    - chmod +x node_modules/.bin/cypress
+    - npx --unsafe-perm cypress verify
     - echo "Running Cypress tests for carpeta 03 (POM + Cucumber)"
-    - npx cypress run --browser electron
+    - npx --unsafe-perm cypress run --browser electron --headless
     - echo "Cypress tests finished."
   artifacts:
     expire_in: 1 week
@@ -66,10 +70,10 @@ cypress_03_tests:
       - cypress/screenshots
 
 # =======================
-#     TEST DE POSTMAN
+# TEST DE POSTMAN
 # =======================
 postman_tests:
-  stage: test
+  stage: postman
   image:
     name: postman/newman:latest
     entrypoint: [""]
