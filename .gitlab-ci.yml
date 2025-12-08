@@ -5,7 +5,7 @@ stages:
 # TEST DE CYPRESS 01
 # =======================
 cypress_01_tests:
-  stage: cypress01
+  stage: test
   image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
     - cd "cypress/01_sencillo"
@@ -26,7 +26,7 @@ cypress_01_tests:
 # TEST DE CYPRESS 02
 # =======================
 cypress_02_tests:
-  stage: cypress02
+  stage: test
   image: cypress/browsers:node20.2.0-chrome112-ff109
   script:
     - cd "cypress/02_POM"
@@ -48,7 +48,7 @@ cypress_02_tests:
 # TEST DE CYPRESS 03
 # =======================
 cypress_03_tests:
-  stage: cypress03
+  stage: test
   image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
     - cd "cypress/03_POMcucumber"
@@ -69,7 +69,7 @@ cypress_03_tests:
 # TEST DE POSTMAN
 # =======================
 postman_tests:
-  stage: postman
+  stage: test
   image:
     name: postman/newman:latest
     entrypoint: [""]
