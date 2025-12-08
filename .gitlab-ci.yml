@@ -11,7 +11,7 @@ cypress_01_tests:
   script:
     - cd "cypress/01 cypress sencillo"
     - npm ci
-    - npx cypress run
+    - npx cypress run --headless
 
 cypress_02_tests:
   stage: test
@@ -19,7 +19,7 @@ cypress_02_tests:
   script:
     - cd "cypress/02 cypres POM"
     - npm ci
-    - npx cypress run
+    - npx cypress run --headless
 
 cypress_03_tests:
   stage: test
@@ -27,7 +27,7 @@ cypress_03_tests:
   script:
     - cd "cypress/03 cypress POM + cucumber"
     - npm ci
-    - npx cypress run
+    - npx cypress run --headless
 
 # =======================
 #     TESTS DE POSTMAN
