@@ -41,4 +41,3 @@ postman_tests:
   script:
     - cd "ejercicios-API-con-postman"
     - newman run collection.json
-
