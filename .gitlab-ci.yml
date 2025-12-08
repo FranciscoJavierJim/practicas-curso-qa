@@ -12,10 +12,6 @@ cypress_01_tests:
     - cd "cypress/01 cypress sencillo"
     - npm ci
     - npx cypress run
-  rules:
-    - changes:
-        - "cypress/01 cypress sencillo/**/*"
-
 
 cypress_02_tests:
   stage: test
@@ -24,10 +20,6 @@ cypress_02_tests:
     - cd "cypress/02 cypres POM"
     - npm ci
     - npx cypress run
-  rules:
-    - changes:
-        - "cypress/02 cypres POM/**/*"
-
 
 cypress_03_tests:
   stage: test
@@ -36,10 +28,6 @@ cypress_03_tests:
     - cd "cypress/03 cypress POM + cucumber"
     - npm ci
     - npx cypress run
-  rules:
-    - changes:
-        - "cypress/03 cypress POM + cucumber/**/*"
-
 
 # =======================
 #     TESTS DE POSTMAN
@@ -53,7 +41,3 @@ postman_tests:
   script:
     - cd postman
     - newman run collection.json
-  rules:
-    - changes:
-        - postman/**/*
-        
