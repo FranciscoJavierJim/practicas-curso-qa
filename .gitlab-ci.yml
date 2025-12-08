@@ -1,8 +1,5 @@
 stages:
-  - cypress01
-  - cypress02
-  - cypress03
-  - postman
+  - test
 
 # =======================
 # TEST DE CYPRESS 01
@@ -30,7 +27,7 @@ cypress_01_tests:
 # =======================
 cypress_02_tests:
   stage: cypress02
-  image: cypress/browsers:node20.1.0-chrome103-ff107 # Node >=20
+  image: cypress/browsers:node20.2.0-chrome112-ff109
   script:
     - cd "cypress/02_POM"
     - npm install --unsafe-perm
@@ -45,6 +42,7 @@ cypress_02_tests:
     paths:
       - cypress/videos
       - cypress/screenshots
+
 
 # =======================
 # TEST DE CYPRESS 03
