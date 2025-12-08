@@ -4,13 +4,13 @@ stages:
 # =======================
 #     TEST DE CYPRESS 01
 # =======================
-
 cypress_01_tests:
   stage: test
   image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
-    - cd "cypress/01 cypress sencillo"
-    - npm install
+    - cd "cypress/01_sencillo"
+    - npm install --unsafe-perm
+    - npx cypress verify
     - echo "Running Cypress tests for carpeta 01"
     - npx cypress run --browser electron
     - echo "Cypress tests finished."
@@ -24,12 +24,11 @@ cypress_01_tests:
 # =======================
 #     TEST DE CYPRESS 02
 # =======================
-
 cypress_02_tests:
   stage: test
   image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
-    - cd "cypress/02 cypress POM"
+    - cd "cypress/02_POM"
     - npm install --unsafe-perm
     - npx cypress verify
     - echo "Running Cypress tests for carpeta 02 (POM)"
@@ -43,15 +42,15 @@ cypress_02_tests:
       - cypress/screenshots
 
 # =======================
-#     TEST DE CYPRESS 03
+#     TEST DE CYPPRESS 03
 # =======================
-
 cypress_03_tests:
   stage: test
   image: cypress/browsers:node18.12.0-chrome103-ff107
   script:
-    - cd "cypress/03 cypress POM + cucumber"
-    - npm install
+    - cd "cypress/03_POMcucumber"
+    - npm install --unsafe-perm
+    - npx cypress verify
     - echo "Running Cypress tests for carpeta 03 (POM + Cucumber)"
     - npx cypress run --browser electron
     - echo "Cypress tests finished."
@@ -65,7 +64,6 @@ cypress_03_tests:
 # =======================
 #     TEST DE POSTMAN
 # =======================
-
 postman_tests:
   stage: test
   image:
