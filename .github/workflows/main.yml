@@ -23,13 +23,13 @@ jobs:
 
       - name: Install Cypress dependencies
         run: |
-          cd practicas-curso-qa/cypress/01_sencillo
+          cd cypress/01_sencillo
           npm install
           npm install cypress --save-dev
 
       - name: Run Cypress tests
         run: |
-          cd practicas-curso-qa/cypress/01_sencillo
+          cd cypress/01_sencillo
           npx cypress run --spec "cypress/e2e/todoMVC-sencillo.cy.js"
 
   postman_tests:
@@ -50,5 +50,4 @@ jobs:
 
       - name: Run Postman collection
         run: |
-          cd practicas-curso-qa
           newman run ejercicios-API-con-postman/collection.json
