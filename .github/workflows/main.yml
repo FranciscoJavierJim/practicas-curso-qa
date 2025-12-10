@@ -1,28 +1,53 @@
-name: CI Pipeline
+name: QA Pipeline
 
 on:
   push:
     branches:
-      - main  # Activa el pipeline cuando haya un push en la rama 'main'
+      - main
   pull_request:
     branches:
-      - main  # Activa el pipeline cuando se crea un PR hacia la rama 'main'
+      - main
 
 jobs:
-  build:
+  cypress_tests:
     runs-on: ubuntu-latest
-    
+    name: Ejecutar tests de Cypress
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2  # Clona el repositorio
-    
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'  # Define la versión de Node.js
-    
+          node-version: '18'
+
       - name: Install dependencies
-        run: npm install  # Instala las dependencias del proyecto
-    
-      - name: Run tests
-        run: npm test  # Ejecuta los tests
+        run: |
+          cd practicas-curso-qa
+          npm install
+          npm install cypress --save-dev
+
+      - name: Run Cypress tests
+        run: |
+          cd practicas-curso-qa
+          npx cypress run --spec "cypress/01_sencillo/cypress/e2e/todoMVC-sencillo.cy.js"
+
+  postman_tests:
+    runs-on: ubuntu-latest
+    name: Ejecutar tests de Postman con Newman
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Newman
+        run: |
+          npm install -g newman
+
+      - name: Run Postman collection
+        run: |
+          newman run practicas-curso-qa/ejercicios-API-con-postman/collection.json
