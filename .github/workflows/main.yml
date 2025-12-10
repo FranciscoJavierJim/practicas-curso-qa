@@ -23,14 +23,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd practicas-curso-qa
           npm install
           npm install cypress --save-dev
 
       - name: Run Cypress tests
         run: |
-          cd practicas-curso-qa
-          npx cypress run --spec "cypress/01_sencillo/cypress/e2e/todoMVC-sencillo.cy.js"
+          npx cypress run --spec "practicas-curso-qa/cypress/01_sencillo/cypress/e2e/todoMVC-sencillo.cy.js"
 
   postman_tests:
     runs-on: ubuntu-latest
