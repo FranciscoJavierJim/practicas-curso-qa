@@ -1,54 +1,53 @@
 name: QA Pipeline
 
 on:
- push:
-  branches: 
-   - main
- pull_request:
-  branches:
-   - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
- cypress_tests:
-  runs-on: ubuntu-latest
-  name: Ejecutar tests de Cypress
-  steps:
-   - name: Checkout repo
-     uses: actions/checkout@v3
+  cypress_tests:
+    runs-on: ubuntu-latest
+    name: Ejecutar tests de Cypress
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-   - name: Setup Node.js
-     uses: actions/setup-node@v3
-     with:
-      node-version: '24'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '24'
 
-   - name: Install Cypress dependencies
-     run: |
-      cd cypress/01_sencillo
-      npm install
-      npm install cypress --save-dev
+      - name: Install Cypress dependencies
+        run: |
+          cd cypress/01_sencillo
+          npm install
+          npm install cypress --save-dev
 
-    - name: Run Cypress tests
-     run: |
-      cd cypress/01_sencillo
-      npx cypress run --spec "cypress/e2e/todoMVC-sencillo.cy.js"
+      - name: Run Cypress tests
+        run: |
+          cd cypress/01_sencillo
+          npx cypress run --spec "cypress/e2e/todoMVC-sencillo.cy.js"
 
+  postman_tests:
+    runs-on: ubuntu-latest
+    name: Ejecutar tests de Postman con Newman
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-postman_tests:
- runs-on: ubuntu-latest
- name: Ejecutar tests de Postman con Newman
- steps:
-  - name: Checkout repo
-    uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-  - name: Setup Node.js
-    uses: actions/setup-node@v3
-    with:
-     node-version: '18'
+      - name: Install Newman
+        run: |
+          npm install -g newman
 
-  - name: Install Newman
-    run: |
-      npm install -g newman
-
-  - name: Run Postman collection
-    run: |
-      newman run ejercicios-API-con-postman/collection.json
+      - name: Run Postman collection
+        run: |
+          newman run ejercicios-API-con-postman/collection.json
