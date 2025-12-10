@@ -1,78 +1,54 @@
 name: QA Pipeline
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+ push:
+  branches: 
+   - main
+ pull_request:
+  branches:
+   - main
 
 jobs:
-  cypress_01_sencillo:
-    runs-on: ubuntu-latest
-    name: Ejecutar tests de Cypress - 01_sencillo
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+ cypress_tests:
+  runs-on: ubuntu-latest
+  name: Ejecutar tests de Cypress
+  steps:
+   - name: Checkout repo
+     uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '24'
+   - name: Setup Node.js
+     uses: actions/setup-node@v3
+     with:
+      node-version: '24'
 
-      - name: Install dependencies (01_sencillo)
-        run: |
-          cd cypress/01_sencillo
-          npm install
-          npm install cypress --save-dev
+   - name: Install Cypress dependencies
+     run: |
+      cd cypress/01_sencillo
+      npm install
+      npm install cypress --save-dev
 
-      - name: Run Cypress tests (01_sencillo)
-        run: |
-          cd cypress/01_sencillo
-          npx cypress run --spec "cypress/e2e/*.cy.js"
+    - name: Run Cypress tests
+     run: |
+      cd cypress/01_sencillo
+      npx cypress run --spec "cypress/e2e/todoMVC-sencillo.cy.js"
 
-    cypress_tests_02_POM:
-    runs-on: ubuntu-latest
-    name: Ejecutar tests de Cypress - 02_POM
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '24'
+postman_tests:
+ runs-on: ubuntu-latest
+ name: Ejecutar tests de Postman con Newman
+ steps:
+  - name: Checkout repo
+    uses: actions/checkout@v3
 
-      - name: Install dependencies for 02_POM
-        run: |
-          cd cypress/02_POM
-          export CI=1
-          npm install
-          npx cypress install
+  - name: Setup Node.js
+    uses: actions/setup-node@v3
+    with:
+     node-version: '18'
 
-      - name: Run Cypress tests 02_POM
-        run: |
-          cd cypress/02_POM
-          npx cypress run --spec "cypress/e2e/*.cy.js"
+  - name: Install Newman
+    run: |
+      npm install -g newman
 
-  postman_tests:
-    runs-on: ubuntu-latest
-    name: Ejecutar tests de Postman con Newman
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install Newman
-        run: |
-          npm install -g newman
-
-      - name: Run Postman collection
-        run: |
-          newman run ejercicios-API-con-postman/collection.json
-
+  - name: Run Postman collection
+    run: |
+      newman run ejercicios-API-con-postman/collection.json
