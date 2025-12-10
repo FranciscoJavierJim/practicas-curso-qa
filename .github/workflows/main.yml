@@ -32,7 +32,7 @@ jobs:
           cd cypress/01_sencillo
           npx cypress run --spec "cypress/e2e/*.cy.js"
 
-  cypress_02_pom:
+    cypress_tests_02_POM:
     runs-on: ubuntu-latest
     name: Ejecutar tests de Cypress - 02_POM
     steps:
@@ -44,13 +44,14 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install dependencies (02_POM)
+      - name: Install dependencies for 02_POM
         run: |
           cd cypress/02_POM
+          export CI=1
           npm install
-          npm install cypress --save-dev
+          npx cypress install
 
-      - name: Run Cypress tests (02_POM)
+      - name: Run Cypress tests 02_POM
         run: |
           cd cypress/02_POM
           npx cypress run --spec "cypress/e2e/*.cy.js"
