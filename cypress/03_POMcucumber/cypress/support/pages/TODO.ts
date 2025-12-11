@@ -20,10 +20,6 @@ export class HomePage {
     return cy.contains('.todo-list li label', task);
   }
 
-  editInput() {
-    return cy.get('.todo-list li.editing .edit');
-  }
-
   filter(filterName: 'All' | 'Active' | 'Completed') {
     cy.get('ul.filters').contains(filterName).click();
   }
