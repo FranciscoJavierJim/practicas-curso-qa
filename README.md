@@ -56,19 +56,19 @@ npx cypress open
 
 Este repositorio sirve como portafolio de prácticas de QA para:
 
-demostrar conocimientos adquiridos en el curso,
+  demostrar conocimientos adquiridos en el curso,
 
-compartir ejemplos de trabajo en QA manual y automatizado,
+  compartir ejemplos de trabajo en QA manual y automatizado,
 
-referenciar respuestas y reportes en evaluaciones futuras.
+  referenciar respuestas y reportes en evaluaciones futuras.
 
 📄 Reportes y evidencias
 
 Dentro del repositorio se encuentran:
 
-Capturas de bugs detectados
+  Capturas de bugs detectados
 
-Archivos PDF con reportes de pruebas y resultados
+  Archivos PDF con reportes de pruebas y resultados
 
 Estos documentos reflejan el trabajo realizado y las conclusiones obtenidas.
 
