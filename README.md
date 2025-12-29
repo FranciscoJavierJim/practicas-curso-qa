@@ -9,14 +9,15 @@ Incluye actividades de Git, Postman, Cypress, pruebas manuales y reportes de res
 
 El repositorio está organizado en varias carpetas y archivos según el tipo de práctica:
 
-.github/workflows/ # Configuraciones de CI (GitHub Actions)
-cypress/ # Prácticas de automatización con Cypress
-docker/ # Archivos relacionados con Docker
+```text
+.github/workflows/           # Configuraciones de CI (GitHub Actions)
+cypress/                    # Prácticas de automatización con Cypress
+docker/                     # Archivos relacionados con Docker
 ejercicios-API-con-postman/ # Pruebas con Postman
-ejercicios-git/ # Ejercicios prácticos de Git
-.gitlab-ci.yml # Configuración de CI/CD (GitLab)
-REPORTES y archivos .PDF # Resultados y reportes de pruebas
-Imágenes de bugs # Screenshots de errores detectados
+ejercicios-git/             # Ejercicios prácticos de Git
+.gitlab-ci.yml              # Configuración de CI/CD (GitLab)
+REPORTES y archivos .PDF    # Resultados y reportes de pruebas
+Imágenes de bugs            # Screenshots de errores detectados
 
 ---
 
